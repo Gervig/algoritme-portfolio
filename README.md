@@ -1,2 +1,2 @@
 # algoritme-portfolio
-Min EK uddannelses portfolio for algoritmer
+Min EK uddannelses portfolio for algoritmer.
