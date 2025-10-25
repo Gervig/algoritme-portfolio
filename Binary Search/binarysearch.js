@@ -1,6 +1,6 @@
 const values = [21, 22, 23, 25, 27, 28, 29, 31, 32, 34, 35];
 
-function binarySearch(searchfor, values) {
+function binarysearch(searchfor, values) {
   // console.log(`I gang med at søge efter: ` + searchfor);
 
   let found = false;
@@ -67,7 +67,7 @@ function binarySearch(searchfor, values) {
   if (found) return values.indexOf(middle);
 }
 
-let result = binarySearch(34, values);
+let result = binarysearch(34, values);
 console.log(`result for 34 in values: ${result}`);
 
 let data = [];
@@ -77,30 +77,30 @@ for (let i = 1; i <= 100; i++) {
 
 console.log(data);
 
-result = binarySearch(50, data);
+result = binarysearch(50, data);
 console.log(`result for 50 in data: ${result}`);
 
-result = binarySearch(25, data);
+result = binarysearch(25, data);
 console.log(`result for 25 in data: ${result}`);
 
-result = binarySearch(75, data);
+result = binarysearch(75, data);
 console.log(`result for 75 in data: ${result}`);
 
-result = binarySearch(12, data);
+result = binarysearch(12, data);
 console.log(`result for 12 in data: ${result}`);
 
-result = binarySearch(18, data);
+result = binarysearch(18, data);
 console.log(`result for 18 in data: ${result}`);
 
-result = binarySearch(15, data);
+result = binarysearch(15, data);
 console.log(`result for 15 in data: ${result}`);
 
-result = binarySearch(3, data);
+result = binarysearch(3, data);
 console.log(`result for 3 in data: ${result}`);
 
 //TODO: binarysearch kan ikke finde searchfor ved index 0
-result = binarySearch(1, data); // kan ikke finde den!
+result = binarysearch(1, data); // kan ikke finde den!
 console.log(`result for 1 in data: ${result}`);
 
-result = binarySearch(2, data);
+result = binarysearch(2, data);
 console.log(`result for 2 in data: ${result}`);
