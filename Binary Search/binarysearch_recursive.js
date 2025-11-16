@@ -6,12 +6,13 @@ export function binarySearchRecursive(
   end = values.length - 1,
   iterations = 0
 ) {
-
   // start by counting iterations up by 1
   iterations++;
 
   // early exit condition
   if (start > end) {
+    // debug logging
+    console.log(`Failed to find ${search} after ${iterations} iterations.`);
     return {
       found: false,
       index: -1,
