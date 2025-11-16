@@ -30,7 +30,7 @@ export function binarySearchRecursive(
     // return object with properties
     return {
       found: true,
-      index: middleIndex + offSet,
+      index: middleIndex,
       iterations,
     };
   }
