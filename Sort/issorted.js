@@ -6,16 +6,3 @@ export function isSorted(arr) {
   return true;
 }
 
-// sorts an arary of numbers
-export function sort(arr) {
-  for (let i = 0; i < arr.length - 1; i++) {
-    let tempCurrent = arr[i];
-    let tempNext = arr[i + 1];
-    //TODO: write inner for loop
-    if (!(arr[i] <= arr[i + 1])) {
-      arr[i] = tempNext;
-      arr[i + 1] = tempCurrent;
-    }
-  }
-  return arr;
-}
