@@ -1,8 +1,9 @@
-export function simpleSort(arr) {
+export function simpleSortValues(arr) {
   let values = [];
   for (let i = 1; i < arr.length; i++) {
     if (arr[i - 1] > arr[i]) {
       values.push(arr[i]);
+      
     }
   }
   return values;
