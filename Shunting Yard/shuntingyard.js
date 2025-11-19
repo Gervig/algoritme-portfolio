@@ -1,4 +1,7 @@
-function shuntingYard(expr) {
+import Queue from "./queue.js";
+import Stack from "./stack.js";
+
+export function shuntingYard(expr) {
   const outputQueue = new Queue();
   const operatorStack = new Stack();
 
