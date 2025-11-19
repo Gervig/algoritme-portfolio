@@ -2,13 +2,17 @@ function shuntingYard(expr) {
   const outputQueue = new Queue();
   const operatorStack = new Stack();
 
+  // map of operators, values are for order of operations
   const precedence = {
     "+": 1,
     "-": 1,
     "*": 2,
     "/": 2,
+    // "%": 2,
+    // "!": 3,
   };
 
+  // Checks if a key (operator) exists in precedence map, true/false
   const isOperator = (c) => precedence.hasOwnProperty(c);
 
   // Tokenize: numbers or single symbols
@@ -52,7 +56,7 @@ function shuntingYard(expr) {
 
   return outputQueue.toArray();
 
-  // Helper function
+  // Helper function to get tokens, whole numbers and single operators (no regex)
   function tokenize(expr) {
     const tokens = [];
     let numberBuffer = "";
