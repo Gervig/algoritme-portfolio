@@ -11,6 +11,7 @@ export function shuntingYard(expr) {
     "-": 1,
     "*": 2,
     "/": 2,
+    //TODO: add modulus and factorial (others?)
     // "%": 2,
     // "!": 3,
   };
@@ -22,6 +23,7 @@ export function shuntingYard(expr) {
   // REGEX
   // \d+ -> matches one or two digits
   // |\S -> | (means or) means any non-whitespace character, so operators
+  // uses strings, not objects
   // const tokens = expr.match(/\d+|\S/g);
 
   // calls helper function to get numbers and operators as tokens
@@ -38,7 +40,8 @@ export function shuntingYard(expr) {
         isOperator(operatorStack.peek()) &&
         precedence[operatorStack.peek()] >= precedence[token]
       ) {
-        outputQueue.enqueue(operatorStack.pop());
+        const opNode = operatorStack.pop().data; // returns Node
+        outputQueue.enqueue(opNode.data); // only enqueue the string
       }
       operatorStack.push(token);
     } else if (token === "(") {
@@ -46,18 +49,18 @@ export function shuntingYard(expr) {
     } else if (token === ")") {
       // pop until "("
       while (!operatorStack.isEmpty() && operatorStack.peek() !== "(") {
-        outputQueue.enqueue(operatorStack.pop());
+        outputQueue.enqueue(operatorStack.pop().data);
       }
-      operatorStack.pop(); // discard "("
+      operatorStack.pop().data; // discard "("
     }
   }
 
   // Move remaining operators
   while (!operatorStack.isEmpty()) {
-    outputQueue.enqueue(operatorStack.pop());
+    outputQueue.enqueue(operatorStack.pop().data);
   }
 
-  return outputQueue.toArray();
+  return outputQueue;
 
   // Helper function to get tokens, whole numbers and single operators (no regex)
   function tokenize(expr) {
@@ -98,11 +101,20 @@ export function shuntingYard(expr) {
       throw new Error("Unexpected character: " + ch);
     }
 
-    // Flush last number at end (example: "123")
+    // Flush last number at end
     if (numberBuffer.length > 0) {
       tokens.push(numberBuffer);
     }
 
     return tokens;
+  }
+}
+
+// node class wrapping data in objects, not pure strings
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+    this.prev = null;
   }
 }
