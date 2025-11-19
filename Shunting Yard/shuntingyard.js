@@ -1,5 +1,3 @@
-
-
 function shuntingYard(expr) {
   const outputQueue = new Queue();
   const operatorStack = new Stack();
@@ -53,50 +51,51 @@ function shuntingYard(expr) {
   }
 
   return outputQueue.toArray();
-}
 
-function tokenize(expr) {
-  const tokens = [];
-  let numberBuffer = "";
+  // Helper function
+  function tokenize(expr) {
+    const tokens = [];
+    let numberBuffer = "";
 
-  for (let i = 0; i < expr.length; i++) {
-    const ch = expr[i];
+    for (let i = 0; i < expr.length; i++) {
+      const ch = expr[i];
 
-    // Ignore spaces
-    if (ch === " ") continue;
+      // Ignore spaces
+      if (ch === " ") continue;
 
-    // Is it a digit?
-    if (ch >= "0" && ch <= "9") {
-      numberBuffer += ch; // build multi-digit number
-      continue;
+      // Is it a digit?
+      if (ch >= "0" && ch <= "9") {
+        numberBuffer += ch; // build multi-digit number
+        continue;
+      }
+
+      // If we reach here and have a number in the buffer, flush it
+      if (numberBuffer.length > 0) {
+        tokens.push(numberBuffer);
+        numberBuffer = "";
+      }
+
+      // Operators or parentheses
+      if (
+        ch === "+" ||
+        ch === "-" ||
+        ch === "*" ||
+        ch === "/" ||
+        ch === "(" ||
+        ch === ")"
+      ) {
+        tokens.push(ch);
+        continue;
+      }
+
+      throw new Error("Unexpected character: " + ch);
     }
 
-    // If we reach here and have a number in the buffer, flush it
+    // Flush last number at end (example: "123")
     if (numberBuffer.length > 0) {
       tokens.push(numberBuffer);
-      numberBuffer = "";
     }
 
-    // Operators or parentheses
-    if (
-      ch === "+" ||
-      ch === "-" ||
-      ch === "*" ||
-      ch === "/" ||
-      ch === "(" ||
-      ch === ")"
-    ) {
-      tokens.push(ch);
-      continue;
-    }
-
-    throw new Error("Unexpected character: " + ch);
+    return tokens;
   }
-
-  // Flush last number at end (example: "123")
-  if (numberBuffer.length > 0) {
-    tokens.push(numberBuffer);
-  }
-
-  return tokens;
 }
