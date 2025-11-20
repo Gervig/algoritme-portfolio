@@ -23,8 +23,10 @@ console.log(
   )}\n B: ${arrB}, Sorted: ${isSorted(arrB)}`
 );
 
-//
-let arrD = merge(arrA, arrB).arr;
+let arrD = merge(
+  { arr: arrA, iterations: 0, sorted: false },
+  { arr: arrB, iterations: 0, sorted: false }
+).arr;
 
 console.log(
   `Merged shuffled A and B too Array D: ${arrD}. Sorted: ${isSorted(arrD)}`
