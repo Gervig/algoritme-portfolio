@@ -33,6 +33,7 @@ export default class Stack {
   // look at the top element (last added element) of the stack
   //TODO: could use an index parameter to peek through the stack
   peek() {
+    if (!this.head) return null;
     return this.head.data;
   }
 

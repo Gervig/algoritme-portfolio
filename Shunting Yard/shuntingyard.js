@@ -11,9 +11,15 @@ export function shuntingYard(expr) {
     "-": 1,
     "*": 2,
     "/": 2,
-    //TODO: add modulus and factorial (others?)
-    // "%": 2,
-    // "!": 3,
+    "^": 3,
+  };
+
+  const associativity = {
+    "+": "left",
+    "-": "left",
+    "*": "left",
+    "/": "left",
+    "^": "right",
   };
 
   // Checks if a key (operator) exists in precedence map, true/false
@@ -36,9 +42,10 @@ export function shuntingYard(expr) {
     } else if (isOperator(token)) {
       // operator → pop higher/equal precedence operators
       while (
-        !operatorStack.isEmpty() &&
-        isOperator(operatorStack.peek()) &&
-        precedence[operatorStack.peek()] >= precedence[token]
+        (associativity[token] === "left" &&
+          precedence[token] <= precedence[operatorStack.peek()]) ||
+        (associativity[token] === "right" &&
+          precedence[token] < precedence[operatorStack.peek()])
       ) {
         const opNode = operatorStack.pop().data; // returns Node
         outputQueue.enqueue(opNode.data); // only enqueue the string
@@ -90,6 +97,7 @@ export function shuntingYard(expr) {
         ch === "+" ||
         ch === "-" ||
         ch === "*" ||
+        ch === "^" ||
         ch === "/" ||
         ch === "(" ||
         ch === ")"

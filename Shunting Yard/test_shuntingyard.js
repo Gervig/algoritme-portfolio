@@ -1,6 +1,6 @@
 import { shuntingYard } from "./shuntingyard.js";
 
-const expr = `4 + 5 * 3`;
+const expr = `4 + 5 * 3 ^ 2`;
 
 console.log(`${expr}`);
 
