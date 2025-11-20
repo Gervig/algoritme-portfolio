@@ -1,4 +1,5 @@
 import { merge } from "./merge.js";
+import { isSorted } from "../Sort/issorted.js";
 
 export function mergeSort(arr, iterations = 0) {
   if (arr.length <= 1) {
@@ -13,5 +14,5 @@ export function mergeSort(arr, iterations = 0) {
   const left = mergeSort(arr.slice(0, mid), iterations++);
   const right = mergeSort(arr.slice(mid), iterations++);
 
-  return merge(left, right, iterations);
+  return merge(left, right, iterations, isSorted(arr));
 }

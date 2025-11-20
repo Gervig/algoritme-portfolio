@@ -1,6 +1,6 @@
 import { isSorted } from "../Sort/issorted.js";
 
-export function merge(left, right, iterations = 0, sorted = false) {
+export function merge(left, right, iterations = 0) {
   let arr = [];
   let i = 0,
     j = 0;
