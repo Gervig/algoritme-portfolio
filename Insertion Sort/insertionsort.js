@@ -19,5 +19,5 @@ export function insertionSort(arr) {
 
   const sorted = isSorted(arr);
 
-  return { array: arr, iterations: iterations, isSorted: sorted };
+  return { array: arr, iterations: iterations, sorted: sorted };
 }

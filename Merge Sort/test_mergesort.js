@@ -1,6 +1,7 @@
 import { mergeSortedArrays, mergeSort } from "./mergesort.js";
 import { shuffle } from "../Shuffle/shuffle.js";
 import { isSorted } from "../Sort/issorted.js";
+import { merge } from "./merge.js";
 
 let arrA = [2, 3, 4, 5, 7];
 let arrB = [0, 1, 6, 8, 9];
@@ -18,6 +19,10 @@ console.log(
   )}\n B: ${arrB}, Sorted: ${isSorted(arrB)}`
 );
 
-let arrD = mergeSort(arrA, arrB);
+let arrD = merge(arrA, arrB).arr;
 
-console.log(`Merge sorted A and B: ${arrD}`);
+console.log(`Merged shuffled A and B: ${arrD}. Sorted: ${isSorted(arrD)}`);
+
+arrD = mergeSort(arrD);
+
+console.log(`Merge sorted A and B: ${JSON.stringify(arrD)}`);
