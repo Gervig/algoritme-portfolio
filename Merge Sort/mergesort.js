@@ -1,25 +1,19 @@
-// assumes arrays are sorted
-function merge(arrA, arrB) {
-  let arrC = new Array(arrA.lenght + arrB.lenght);
+export function mergeSort(arrA, arrB) {
+  let arrC = [];
+  let i = 0,
+    j = 0;
 
-  let a = 0;
-  let b = 0;
-  let c = 0;
-  while (c < arrC.length) {
-    aValue = arrA[a];
-    bValue = arrB[b];
-    cValue = arrC[c];
-
-    if (aValue <= bValue) {
-      arrC[c] = aValue;
-      a++;
+  while (i < arrA.length && j < arrB.length) {
+    if (arrA[i] < arrB[j]) {
+      arrC.push(arrA[i++]);
     } else {
-      arrC[c] = bValue;
-      b++;
+      arrC.push(arrB[j++]);
     }
-
-    c++;
   }
+
+  // Append remaining elements
+  while (i < arrA.length) arrC.push(arrA[i++]);
+  while (j < arrB.length) arrC.push(arrB[j++]);
 
   return arrC;
 }
