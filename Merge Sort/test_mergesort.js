@@ -1,4 +1,5 @@
-import { mergeSortedArrays, mergeSort } from "./mergesort.js";
+import { mergeSort } from "./mergesort.js";
+import { mergeSorted } from "./mergeSorted.js";
 import { shuffle } from "../Shuffle/shuffle.js";
 import { isSorted } from "../Sort/issorted.js";
 import { merge } from "./merge.js";
@@ -7,9 +8,9 @@ import { merge } from "./merge.js";
 let arrA = [2, 3, 4, 5, 7];
 let arrB = [0, 1, 6, 8, 9];
 
-let arrC = mergeSortedArrays(arrA, arrB);
+let arrC = mergeSorted(arrA, arrB);
 
-console.log(`Merged sorted arrays: ${arrC}`);
+console.log(`Merged sorted arrays: ${arrC}, Sorted: ${isSorted(arrC)}`);
 
 // shuffles arrays again
 arrA = shuffle(arrA);
@@ -32,7 +33,7 @@ console.log(
 // combine array A and B
 arrD = [...arrA, ...arrB];
 
-console.log(`Combined A and B to D: ${arrD}`);
+console.log(`Combined A and B to D: ${arrD}, Sorted: ${isSorted(arrD)}`);
 
 //TODO: make it work with objects
 arrD = mergeSort(arrD);

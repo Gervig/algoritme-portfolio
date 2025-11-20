@@ -1,16 +1,7 @@
 import { isSorted } from "../Sort/issorted.js";
 
-export function merge(left, right) {
-
-  let iterations = 0;
+export function merge(left, right, iterations = 0, sorted = false) {
   let arr = [];
-  let sorted = false;
-
-  let result = {
-    arr: arr,
-    iterations: iterations,
-    sorted: sorted,
-  };
   let i = 0,
     j = 0;
 
@@ -31,10 +22,8 @@ export function merge(left, right) {
   }
   while (j < right.length) {
     arr.push(right[j++]);
-    iterations;
+    iterations++;
   }
 
-  sorted = isSorted(arr);
-
-  return result;
+  return { arr: arr, iterations: iterations, sorted: isSorted(arr) };
 }
