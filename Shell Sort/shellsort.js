@@ -1,4 +1,4 @@
-import { isSorted } from "../Sort/issorted";
+import { isSorted } from "../Sort/issorted.js";
 
 export function shellSort(arr) {
   let n = arr.length;
@@ -10,10 +10,12 @@ export function shellSort(arr) {
   while (gap > 0) {
     iterations++;
     for (let i = gap; i < n; i++) {
+      iterations++;
       let j = i;
       let temp = arr[i];
       // swap values if left value is larger
       while (j >= gap && arr[j - gap] > temp) {
+        iterations++;
         j -= gap;
       }
       arr[j] = temp;
