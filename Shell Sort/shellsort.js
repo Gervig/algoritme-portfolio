@@ -16,6 +16,7 @@ export function shellSort(arr) {
       // swap values if left value is larger
       while (j >= gap && arr[j - gap] > temp) {
         iterations++;
+        arr[j] = arr[j - gap];
         j -= gap;
       }
       arr[j] = temp;
